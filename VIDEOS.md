@@ -1,0 +1,1 @@
+[Notatkomator #0](https://youtu.be/D22gEvU7XUM?si=NhV3BecNLI4_Rwjm)
