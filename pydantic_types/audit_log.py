@@ -11,4 +11,4 @@ class AuditLogListResponse(BaseModel):
     page: int
     total: int
     has_next: bool
-    audit_logs: List[AuditLogSchema]
+    list: List[AuditLogSchema]

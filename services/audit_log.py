@@ -17,7 +17,7 @@ class AuditLogService():
         return {
             "page": page,
             "total": total,
-            "audit_logs": audit_logs,
+            "list": audit_logs,
             "has_next": has_next
         }
 
