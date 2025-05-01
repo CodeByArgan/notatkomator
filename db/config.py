@@ -1,5 +1,8 @@
+from settings import env_settings
+
+
 TORTOISE_ORM = {
-    "connections": {"default": "postgres://root:root@localhost:5432/notatkomator"},
+    "connections": {"default": env_settings.db_url},
     "apps": {
         "models": {
             "models": ["models", "aerich.models"],

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 from contextlib import asynccontextmanager
 
+from settings import env_settings
 from endpoints.audit_log import audit_log_router
 
 from db.config import TORTOISE_ORM
@@ -18,14 +19,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-
-origins = [
-    "http://localhost:5173",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=env_settings.cors_origin_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
