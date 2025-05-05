@@ -4,3 +4,7 @@ export interface ListResponse<T> {
   has_next: boolean;
   list: T;
 }
+
+export interface BaseResponse {
+  message: 'ok' | 'error';
+}

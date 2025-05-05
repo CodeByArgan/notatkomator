@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 
 import { axiosGet, axiosPost } from '../utils';
-import { ListResponse } from '../api';
+import { BaseResponse, ListResponse } from '../api';
 import { LoadingSpinner } from '../shared';
 
 interface AuditLog {
@@ -21,7 +21,7 @@ export const HomePage = () => {
 
   const createAuditLog = useMutation({
     mutationFn: async () =>
-      await axiosPost({
+      await axiosPost<BaseResponse>({
         url: '/audit-log/test-create',
         data: {},
       }),
@@ -32,12 +32,12 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className="text-xl text-white">Home page</h1>
+      <h1 className="text-xl">Home page</h1>
 
       <h3>Audit logs list</h3>
       <div>
         <button
-          className="cursor-pointer text-white border-white border-1 p-2 rounded-sm hover:bg-white/10"
+          className="cursor-pointer border-white border-1 p-2 rounded-sm hover:bg-white/10"
           onClick={() => createAuditLog.mutate()}
         >
           Add test audit log
@@ -46,7 +46,7 @@ export const HomePage = () => {
       {isPending && <LoadingSpinner />}
       {!isPending &&
         data?.list.map((auditLog) => (
-          <p key={auditLog.id} className="text-white">
+          <p key={auditLog.id}>
             {auditLog.username} [{format(auditLog.created_at, 'Pp')}]:{' '}
             {auditLog.details}{' '}
           </p>

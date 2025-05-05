@@ -21,8 +21,17 @@ Przy pierwszym odpaleniu pamiętaj, aby wykonać inicjalizację Aerich:
 
 Przy odpalaniu deweloperskim Docker Compose wystawia również Adminera do łatwiejszego zarządzania bazą – login i hasło znajdują się w pliku `docker-compose.db.dev.yaml`.
 
+## Descope
+
+Aby logownie działało, nalzeży stworzyc sobie konto na Descope i uzupełnić plik `.env` o dane `DESCOPE_ID` w głownym folderze oraz w folderze `ui`.
+
 ## Serwer FastAPI
 
 W głównym folderze wpisujemy:  
 `uvicorn main:app`  
 Podczas developmentu polecam flagę `--reload`, dzięki której serwer będzie odświeżał się automatycznie przy zmianach w plikach.
+
+## Testy
+
+Aby uruchomić testy, wpisujemy:
+`PYTHONPATH=. pytest`

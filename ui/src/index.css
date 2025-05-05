@@ -1,1 +1,6 @@
 @import 'tailwindcss';
+
+BODY {
+  background-color: var(--color-stone-900);
+  color: white;
+}

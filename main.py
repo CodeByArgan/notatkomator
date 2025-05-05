@@ -3,8 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 from contextlib import asynccontextmanager
 
+from db.init_data import create_initial_database_data
 from settings import env_settings
 from endpoints.audit_log import audit_log_router
+from endpoints.auth import auth_router
 
 from db.config import TORTOISE_ORM
 
@@ -13,6 +15,7 @@ from db.config import TORTOISE_ORM
 async def lifespan(app: FastAPI):
     await Tortoise.init(config=TORTOISE_ORM)
     await Tortoise.generate_schemas()
+    await create_initial_database_data()
     yield
     await Tortoise.close_connections()
 
@@ -28,3 +31,4 @@ app.add_middleware(
 )
 
 app.include_router(audit_log_router)
+app.include_router(auth_router)
