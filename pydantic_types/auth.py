@@ -8,7 +8,6 @@ class VerifyOTPBody(BaseModel):
 
 class VerifyOTPResponse(BaseModel):
     message: str
-    user: str
 
 
 class AuthMeResponse(BaseModel):

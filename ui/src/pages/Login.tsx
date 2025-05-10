@@ -43,17 +43,10 @@ export const LoginPage = () => {
           flowId="sign-up-or-in-email-input"
           theme="dark"
           onSuccess={async (e) => {
-            console.log(e);
-
-            const response = await verifyOtp.mutate({
+            await verifyOtp.mutate({
               email: e.detail?.user?.email || '',
               sessionJwt: e.detail.sessionJwt,
             });
-
-            console.log(response);
-          }}
-          onError={(err) => {
-            console.log('Error!', err);
           }}
         />
       </AuthProvider>
