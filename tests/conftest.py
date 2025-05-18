@@ -3,7 +3,7 @@ import pytest
 from httpx import AsyncClient, ASGITransport
 from tortoise import Tortoise
 
-from db.init_data import create_initial_database_data
+from db.init_data import initial_test_database
 from main import app
 from models.role import Role
 from models.user import User
@@ -18,7 +18,7 @@ async def init_test_db():
         modules={"models": ["models"]},
     )
     await Tortoise.generate_schemas()
-    await create_initial_database_data()
+    await initial_test_database()
     yield
     await Tortoise.close_connections()
 
@@ -34,13 +34,8 @@ async def client():
 
 @pytest.fixture
 async def auth_client(init_test_db):
-    role, _ = await Role.get_or_create(name="user")
-    user = await User.create(
-        id=uuid.uuid4(),
-        descope_user_id="mock-user-id",
-        email="test@example.com",
-        role=role,
-    )
+    user = await User.get(id=uuid.UUID('00000000-0000-4000-a000-000000000000'))
+    
     token = await auth_service.create_refresh_token(str(user.id))
 
     async with AsyncClient(

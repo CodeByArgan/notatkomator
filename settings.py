@@ -1,3 +1,4 @@
+from uuid import UUID
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -19,6 +20,8 @@ class EnvSettings(BaseSettings):
 
     descope_id: str
     debug: bool = False
+
+    test_user_uuid: UUID
 
     @property
     def db_url(self) -> str:

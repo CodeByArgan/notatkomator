@@ -21,6 +21,8 @@ Przy pierwszym odpaleniu pamiętaj, aby wykonać inicjalizację Aerich:
 
 Przy odpalaniu deweloperskim Docker Compose wystawia również Adminera do łatwiejszego zarządzania bazą – login i hasło znajdują się w pliku `docker-compose.db.dev.yaml`.
 
+Nowr migracje towrzymy przy pomocy komendy `aerich migrate --name nazwa_migracji`
+
 ## Descope
 
 Aby logownie działało, nalzeży stworzyc sobie konto na Descope i uzupełnić plik `.env` o dane `DESCOPE_ID` w głownym folderze oraz w folderze `ui`.

@@ -7,6 +7,8 @@ from db.init_data import create_initial_database_data
 from settings import env_settings
 from endpoints.audit_log import audit_log_router
 from endpoints.auth import auth_router
+from endpoints.medium import medium_router
+from endpoints.notes import notes_router
 
 from db.config import TORTOISE_ORM
 
@@ -32,3 +34,5 @@ app.add_middleware(
 
 app.include_router(audit_log_router)
 app.include_router(auth_router)
+app.include_router(medium_router)
+app.include_router(notes_router)

@@ -6,7 +6,7 @@ from pydantic_types.audit_log import AuditLogListResponse
 
 class AuditLogService():
 
-    async def get_list(self, page: int, limit) -> AuditLogListResponse:
+    async def get_list(self, page: int, limit: int) -> AuditLogListResponse:
         offset = (page - 1) * limit
         logger.info(
             "Get list of audit logs page: %s limit: %s offset: %s", page, limit, offset)

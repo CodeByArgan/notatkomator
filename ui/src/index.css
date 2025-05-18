@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+/* Fix for not working hovers on some browsers */
+
+@custom-variant hover {
+  &:hover {
+    @slot;
+  }
+}
+
 BODY {
   background-color: var(--color-stone-900);
   color: white;

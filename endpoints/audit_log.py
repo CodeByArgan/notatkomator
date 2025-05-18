@@ -6,11 +6,11 @@ from services.audit_log import audit_log_service
 from utils.auth import get_current_user
 
 
-audit_log_router = APIRouter()
+audit_log_router = APIRouter(prefix="/audit-log")
 
 
 @audit_log_router.get(
-    '/audit-log/list',
+    '/list',
     tags=["audit log"],
     description="Method that returns paginated list of audit logs",
     response_model=AuditLogListResponse,
@@ -24,7 +24,7 @@ async def get_audit_log_list(
 
 
 @audit_log_router.post(
-    '/audit-log/test-create',
+    '/test-create',
     tags=["audit log"],
     description="Method that created testing audit log",
 )

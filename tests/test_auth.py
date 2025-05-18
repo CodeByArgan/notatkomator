@@ -17,7 +17,7 @@ async def test_auth_logout_unauthenticated(client):
 async def test_auth_me_authenticated(auth_client):
     response = await auth_client.get("/auth/me")
     assert response.status_code == 200
-    assert response.json() == {"email": "test@example.com", "role": "user"}
+    assert response.json() == {"email": "user@system.com", "role": "user"}
 
 
 @pytest.mark.anyio
